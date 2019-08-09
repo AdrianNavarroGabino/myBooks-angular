@@ -1,0 +1,30 @@
+<div class="card">
+    <div class="card-block">
+        <form class="form">
+            <div class="form-group row">
+                <label class="col-form-label col-sm-2 text-sm-right"
+                for="filterDesc">Filtro:</label>
+                <div class="col-sm-5">
+                    <input type="text" [(ngModel)]="filterSearch" class="form-control"
+                            name="filterDesc" id="filterDesc" placeHolder="Filter...">
+                </div>
+                <label class="col-form-label col-sm-5">Filtrado por: {{ filterSearch }}</label>
+            </div>
+        </form>
+
+        <div class="card-header bg-primary text-white">
+            {{ title }}
+        </div>
+
+        <div *ngIf="books && books.length > 0">
+            <div class="row headers no-gutters">
+                <div class="col-4">{{ headers.title }}</div>
+                <div class="col">{{ headers.author }}</div>
+                <div class="col">{{ headers.yearOfReading }}</div>
+                <div class="col">{{ headers.rating }}</div>
+            </div>
+            <app-book-item class="row no-gutters" *ngFor="let book of books | bookFilter:filterSearch | bookOrder" [book]="book" [rating]="book.rating">
+            </app-book-item>
+        </div>
+    </div>
+</div>

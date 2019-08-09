@@ -1,0 +1,5 @@
+<div class="col-4">{{ book.title }}</div>
+<div class="col">{{ book.author }}</div>
+<div class="col">{{ book.yearOfReading }}</div>
+<div class="col"><app-star-rating [rating]="book.rating"
+    (ratingChanged)="changeRating($event)"></app-star-rating></div>
